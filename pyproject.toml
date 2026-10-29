@@ -21,11 +21,6 @@ classifiers = [
 ]
 dependencies = [
   "adjustText",
-  "anndata",
-  "biopython",
-  "comprisk>=0.7,<0.9",
-  "gseapy",
-  "lifelines>=0.30",
   "lxml",
   "matplotlib>=3.10",
   "matplotlib-venn",
@@ -36,7 +31,6 @@ dependencies = [
   "pandas",
   "patsy",
   "pycomplexheatmap>=1.8.4,<1.9",
-  "scanpy",
   "scikit-learn",
   "scipy",
   "seaborn>=0.13.2",
@@ -55,8 +49,13 @@ Repository = "https://github.com/faridrashidi/cnsplots"
 cnsplots = "cnsplots._cli:main"
 
 [project.optional-dependencies]
-dev = ["cnsplots[test,docs,lint,notebook,release]"]
+singlecell = ["scanpy", "anndata"]
+survival = ["lifelines>=0.30", "comprisk>=0.7,<0.9"]
+genomics = ["gseapy", "biopython"]
+all = ["cnsplots[singlecell,survival,genomics]"]
+dev = ["cnsplots[all,test,docs,lint,notebook,release]"]
 test = [
+  "cnsplots[all]",
   "fastcluster",
   "pytest",
   "pytest-cov",
