@@ -483,13 +483,6 @@ version = "0.8.0"
 source = { editable = "." }
 dependencies = [
     { name = "adjusttext" },
-    { name = "anndata", version = "0.11.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "anndata", version = "0.12.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-    { name = "biopython" },
-    { name = "comprisk" },
-    { name = "gseapy" },
-    { name = "lifelines", version = "0.30.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "lifelines", version = "0.30.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "lxml" },
     { name = "matplotlib" },
     { name = "matplotlib-venn" },
@@ -501,8 +494,6 @@ dependencies = [
     { name = "pandas" },
     { name = "patsy" },
     { name = "pycomplexheatmap" },
-    { name = "scanpy", version = "1.11.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "scanpy", version = "1.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "scikit-learn", version = "1.7.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "scikit-learn", version = "1.8.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "scipy", version = "1.15.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
@@ -514,18 +505,38 @@ dependencies = [
 ]
 
 [package.optional-dependencies]
+all = [
+    { name = "anndata", version = "0.11.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "anndata", version = "0.12.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "biopython" },
+    { name = "comprisk" },
+    { name = "gseapy" },
+    { name = "lifelines", version = "0.30.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "lifelines", version = "0.30.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "scanpy", version = "1.11.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scanpy", version = "1.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+]
 dev = [
+    { name = "anndata", version = "0.11.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "anndata", version = "0.12.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "biopython" },
     { name = "bump-my-version" },
+    { name = "comprisk" },
     { name = "fastcluster" },
     { name = "furo" },
     { name = "glasbey" },
+    { name = "gseapy" },
     { name = "ipykernel" },
+    { name = "lifelines", version = "0.30.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "lifelines", version = "0.30.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "myst-parser", version = "4.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "myst-parser", version = "5.0.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "pre-commit" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pytest-mpl" },
+    { name = "scanpy", version = "1.11.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scanpy", version = "1.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "sphinx", version = "8.1.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "sphinx", version = "9.0.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "sphinx-autodoc-typehints", version = "3.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
@@ -555,12 +566,25 @@ docs = [
     { name = "sphinx-multiversion" },
     { name = "sphinx-sitemap" },
 ]
+genomics = [
+    { name = "biopython" },
+    { name = "gseapy" },
+]
 lint = [
+    { name = "anndata", version = "0.11.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "anndata", version = "0.12.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "biopython" },
+    { name = "comprisk" },
     { name = "fastcluster" },
+    { name = "gseapy" },
+    { name = "lifelines", version = "0.30.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "lifelines", version = "0.30.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "pre-commit" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pytest-mpl" },
+    { name = "scanpy", version = "1.11.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scanpy", version = "1.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "sphinx", version = "8.1.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "sphinx", version = "9.0.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "sphinx-gallery" },
@@ -572,11 +596,31 @@ notebook = [
 release = [
     { name = "bump-my-version" },
 ]
+singlecell = [
+    { name = "anndata", version = "0.11.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "anndata", version = "0.12.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "scanpy", version = "1.11.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scanpy", version = "1.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+]
+survival = [
+    { name = "comprisk" },
+    { name = "lifelines", version = "0.30.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "lifelines", version = "0.30.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+]
 test = [
+    { name = "anndata", version = "0.11.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "anndata", version = "0.12.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "biopython" },
+    { name = "comprisk" },
     { name = "fastcluster" },
+    { name = "gseapy" },
+    { name = "lifelines", version = "0.30.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "lifelines", version = "0.30.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pytest-mpl" },
+    { name = "scanpy", version = "1.11.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scanpy", version = "1.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "sphinx", version = "8.1.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "sphinx", version = "9.0.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "sphinx-gallery" },
@@ -585,19 +629,21 @@ test = [
 [package.metadata]
 requires-dist = [
     { name = "adjusttext" },
-    { name = "anndata" },
-    { name = "biopython" },
+    { name = "anndata", marker = "extra == 'singlecell'" },
+    { name = "biopython", marker = "extra == 'genomics'" },
     { name = "bump-my-version", marker = "extra == 'release'" },
+    { name = "cnsplots", extras = ["all"], marker = "extra == 'test'" },
+    { name = "cnsplots", extras = ["all", "test", "docs", "lint", "notebook", "release"], marker = "extra == 'dev'" },
+    { name = "cnsplots", extras = ["singlecell", "survival", "genomics"], marker = "extra == 'all'" },
     { name = "cnsplots", extras = ["test"], marker = "extra == 'lint'" },
-    { name = "cnsplots", extras = ["test", "docs", "lint", "notebook", "release"], marker = "extra == 'dev'" },
-    { name = "comprisk", specifier = ">=0.7,<0.9" },
+    { name = "comprisk", marker = "extra == 'survival'", specifier = ">=0.7,<0.9" },
     { name = "fastcluster", marker = "extra == 'docs'" },
     { name = "fastcluster", marker = "extra == 'test'" },
     { name = "furo", marker = "extra == 'docs'" },
     { name = "glasbey", marker = "extra == 'docs'" },
-    { name = "gseapy" },
+    { name = "gseapy", marker = "extra == 'genomics'" },
     { name = "ipykernel", marker = "extra == 'notebook'" },
-    { name = "lifelines", specifier = ">=0.30" },
+    { name = "lifelines", marker = "extra == 'survival'", specifier = ">=0.30" },
     { name = "lxml" },
     { name = "matplotlib", specifier = ">=3.10" },
     { name = "matplotlib-venn" },
@@ -613,7 +659,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'test'" },
     { name = "pytest-cov", marker = "extra == 'test'" },
     { name = "pytest-mpl", marker = "extra == 'test'", specifier = ">=0.19,<0.20" },
-    { name = "scanpy" },
+    { name = "scanpy", marker = "extra == 'singlecell'" },
     { name = "scikit-learn" },
     { name = "scipy" },
     { name = "seaborn", specifier = ">=0.13.2" },
@@ -633,7 +679,7 @@ requires-dist = [
     { name = "ty", marker = "extra == 'lint'" },
     { name = "upsetplot" },
 ]
-provides-extras = ["dev", "test", "docs", "lint", "notebook", "release"]
+provides-extras = ["singlecell", "survival", "genomics", "all", "dev", "test", "docs", "lint", "notebook", "release"]
 
 [[package]]
 name = "colorama"
