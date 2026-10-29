@@ -71,10 +71,19 @@ def _anndata_to_heatmap_dataframe(adata: AnnData, layer: str | None) -> pd.DataF
     return pd.DataFrame(matrix, index=adata.obs_names, columns=adata.var_names)
 
 
+def _is_anndata(obj: Any) -> bool:
+    try:
+        from anndata import AnnData
+
+        return isinstance(obj, AnnData)
+    except ImportError:
+        return False
+
+
 def _to_heatmap_dataframe(
     data: AnnData | pd.DataFrame | np.ndarray, layer: str | None
 ) -> pd.DataFrame:
-    if isinstance(data, AnnData):
+    if _is_anndata(data):
         return _anndata_to_heatmap_dataframe(data, layer)
     if isinstance(data, np.ndarray):
         if data.ndim != 2:
@@ -255,7 +264,7 @@ def heatmapplot(
     ... )
     >>> cns.heatmapplot(expression_df, row_cluster=True, col_cluster=True)
     """
-    if isinstance(adata, AnnData):
+    if _is_anndata(adata):
         if layer is not None:
             validate_adata_layer(adata, layer, "heatmapplot")
         if row_annotation is not None:
