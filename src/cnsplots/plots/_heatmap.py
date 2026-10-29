@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import matplotlib as mpl
 import matplotlib.colorbar  # noqa: F401  # ensure submodule is importable for isinstance checks
@@ -11,13 +11,15 @@ import numpy as np
 import pandas as pd
 import PyComplexHeatmap as pch
 import seaborn as sns
-from anndata import AnnData
-from anndata.abc import CSCDataset, CSRDataset
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 from natsort import natsort_keygen
 from scipy import sparse
 from scipy.stats import fisher_exact
+
+if TYPE_CHECKING:
+    from anndata import AnnData
+    from anndata.abc import CSCDataset, CSRDataset
 
 from cnsplots._settings import settings
 import cnsplots._utils as utils
@@ -43,7 +45,12 @@ def _anndata_to_heatmap_dataframe(adata: AnnData, layer: str | None) -> pd.DataF
         raise ValueError("X is None, cannot convert to dataframe.")
 
     matrix = adata.X if layer is None else adata.layers[layer]
-    is_backed_sparse = isinstance(matrix, (CSRDataset, CSCDataset))
+    try:
+        from anndata.abc import CSCDataset, CSRDataset
+
+        is_backed_sparse = isinstance(matrix, (CSRDataset, CSCDataset))
+    except ImportError:
+        is_backed_sparse = False
     if sparse.issparse(matrix) or is_backed_sparse:
         sparse_matrix = cast(Any, matrix)
         dense_nbytes = (

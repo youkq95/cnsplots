@@ -47,7 +47,13 @@ def cuminc(
     validate_column_type(df, "E", ["numeric"], "cuminc")
     validate_categorical_has_levels(df, "group", min_levels=2, function_name="cuminc")
 
-    from comprisk import gray_test
+    try:
+        from comprisk import gray_test
+    except ImportError as exc:
+        raise ImportError(
+            "[cuminc] comprisk is required but not installed. "
+            "Install with: pip install 'cnsplots[survival]'"
+        ) from exc
 
     result = gray_test(
         time=df["T"],

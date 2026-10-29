@@ -129,7 +129,13 @@ def _validate_logrank_variance(
 
 
 def _fit_cox_inference(data: pd.DataFrame, covariate: str) -> Any:
-    import lifelines as ll
+    try:
+        import lifelines as ll
+    except ImportError as exc:
+        raise ImportError(
+            "[_fit_cox_inference] lifelines is required but not installed. "
+            "Install with: pip install 'cnsplots[survival]'"
+        ) from exc
 
     _validate_comparison(data, "_event", covariate)
     if (
@@ -477,13 +483,19 @@ def survivalplot(
         "survivalplot",
     )
 
-    import lifelines as ll
-    from lifelines.plotting import add_at_risk_counts
-    from lifelines.statistics import (
-        multivariate_logrank_test,
-        survival_difference_at_fixed_point_in_time_test,
-    )
-    from lifelines.utils import restricted_mean_survival_time
+    try:
+        import lifelines as ll
+        from lifelines.plotting import add_at_risk_counts
+        from lifelines.statistics import (
+            multivariate_logrank_test,
+            survival_difference_at_fixed_point_in_time_test,
+        )
+        from lifelines.utils import restricted_mean_survival_time
+    except ImportError as exc:
+        raise ImportError(
+            "[survivalplot] lifelines is required but not installed. "
+            "Install with: pip install 'cnsplots[survival]'"
+        ) from exc
 
     data = data.copy()
     observed_groups = list(data[hue].unique())
@@ -1074,8 +1086,14 @@ def cumulativeincidenceplot(
         )
 
     import cnsplots.helpers._cmprsk as helper_cmprsk
-    import lifelines as ll
-    from lifelines.plotting import add_at_risk_counts
+    try:
+        import lifelines as ll
+        from lifelines.plotting import add_at_risk_counts
+    except ImportError as exc:
+        raise ImportError(
+            "[cumulativeincidenceplot] lifelines is required but not installed. "
+            "Install with: pip install 'cnsplots[survival]'"
+        ) from exc
 
     data = data.copy()
     if ax is None:

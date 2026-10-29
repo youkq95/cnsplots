@@ -59,7 +59,7 @@ def validate_anndata(adata: Any, param_name: str, function_name: str) -> None:
     except ImportError:
         raise ImportError(
             f"[{function_name}] AnnData is required but not installed. "
-            "Install with: pip install anndata"
+            "Install with: pip install 'cnsplots[singlecell]'"
         )
 
     if not isinstance(adata, AnnData):

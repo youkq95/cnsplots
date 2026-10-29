@@ -404,7 +404,13 @@ def setup_scanpy() -> None:
     >>> cns.setup_scanpy()
     >>> sc.pl.umap(adata, color="cell_type")
     """
-    import scanpy
+    try:
+        import scanpy
+    except ImportError as exc:
+        raise ImportError(
+            "[setup_scanpy] scanpy is required but not installed. "
+            "Install with: pip install 'cnsplots[singlecell]'"
+        ) from exc
 
     setup_matplotlib()
     cast(Any, scanpy).set_figure_params(

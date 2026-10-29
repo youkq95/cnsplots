@@ -29,7 +29,13 @@ from cnsplots._validation import (
 def phyloplot(adata: AnnData, *, ax: Axes | None = None) -> Axes:
     import io
 
-    import Bio.Phylo
+    try:
+        import Bio.Phylo
+    except ImportError as exc:
+        raise ImportError(
+            "[phyloplot] biopython is required but not installed. "
+            "Install with: pip install 'cnsplots[genomics]'"
+        ) from exc
 
     validate_anndata(adata, "adata", "phyloplot")
     validate_adata_layer(adata, "trisicell_output", "phyloplot")

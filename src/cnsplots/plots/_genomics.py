@@ -304,7 +304,13 @@ def gseaplot(
     validate_columns_exist(data, [y, "NES", color, significance_column], "gseaplot")
     validate_dataframe_not_empty(data, "gseaplot")
 
-    import gseapy as gp
+    try:
+        import gseapy as gp
+    except ImportError as exc:
+        raise ImportError(
+            "[gseaplot] gseapy is required but not installed. "
+            "Install with: pip install 'cnsplots[genomics]'"
+        ) from exc
 
     plot_data = data.loc[data[significance_column] <= cutoff].copy()
     resolved_cmap = utils.palettes(cmap) if cmap in _CNS_CONTINUOUS_CMAPS else cmap

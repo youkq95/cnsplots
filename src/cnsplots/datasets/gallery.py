@@ -106,7 +106,13 @@ def get_showcase_data(
     """
     import numpy as np
     import pandas as pd
-    import scanpy as sc
+    try:
+        import scanpy as sc
+    except ImportError as exc:
+        raise ImportError(
+            "[get_showcase_data] scanpy is required but not installed. "
+            "Install with: pip install 'cnsplots[singlecell]'"
+        ) from exc
 
     from cnsplots.datasets._loader import load_dataset
 

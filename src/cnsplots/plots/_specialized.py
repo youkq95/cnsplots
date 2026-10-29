@@ -1,20 +1,22 @@
 from __future__ import annotations
 
 from itertools import combinations
-from typing import Any, Literal, TypedDict
+from typing import TYPE_CHECKING, Any, Literal, TypedDict
 
 import matplotlib.pyplot as plt
 import num2tex
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from anndata import AnnData
 from matplotlib.artist import Artist
 from matplotlib.axes import Axes
 from matplotlib.patches import Circle, FancyBboxPatch, Polygon
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from sklearn.metrics import auc, roc_curve
 from statsmodels.stats.multitest import multipletests
+
+if TYPE_CHECKING:
+    from anndata import AnnData
 
 import cnsplots.helpers._roc as helper_roc
 import cnsplots.helpers._sankey as helper_sankey

@@ -209,8 +209,14 @@ class CoxModel:
         self.diagnostics = pd.DataFrame()
         self.estimators = {}
 
-        import lifelines as ll
-        from lifelines.utils import CovariateParameterMappings
+        try:
+            import lifelines as ll
+            from lifelines.utils import CovariateParameterMappings
+        except ImportError as exc:
+            raise ImportError(
+                "[CoxModel.fit] lifelines is required but not installed. "
+                "Install with: pip install 'cnsplots[survival]'"
+            ) from exc
 
         validate_dataframe(self.data, "data", "CoxModel.fit")
         validate_dataframe_not_empty(self.data, "CoxModel.fit")
@@ -1039,7 +1045,7 @@ def prerank(
     except ImportError as exc:
         raise ImportError(
             "[prerank] gseapy is required but not installed. "
-            "Install with: pip install gseapy"
+            "Install with: pip install 'cnsplots[genomics]'"
         ) from exc
 
     rnk = data.copy()
